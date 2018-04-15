@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b13d61e-3a1c-4a6f-948e-0e71b9186cfa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     DETAIL_CUTI."ID_DETAIL_CUTI" AS DETAIL_CUTI_ID_DETAIL_CUTI,
+     DETAIL_CUTI."NIK" AS DETAIL_CUTI_NIK,
+     DETAIL_CUTI."TANGGAL_MULAI" AS DETAIL_CUTI_TANGGAL_MULAI,
+     DETAIL_CUTI."TANGGAL_SELESAI" AS DETAIL_CUTI_TANGGAL_SELESAI,
+     DETAIL_CUTI."LAMA_CUTI" AS DETAIL_CUTI_LAMA_CUTI,
+     KARYAWAN."NAMA" AS KARYAWAN_NAMA,
+     CUTI."JENIS_CUTI" AS CUTI_JENIS_CUTI
+FROM
+     "HR"."KARYAWAN" KARYAWAN INNER JOIN "HR"."DETAIL_CUTI" DETAIL_CUTI ON KARYAWAN."NIK" = DETAIL_CUTI."NIK"
+     INNER JOIN "HR"."CUTI" CUTI ON DETAIL_CUTI."ID_CUTI" = CUTI."ID_CUTI"
+WHERE
+     DETAIL_CUTI."ID_DETAIL_CUTI" = $P{ID}]]>
+	</queryString>
+	<field name="DETAIL_CUTI_ID_DETAIL_CUTI" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_NIK" class="java.lang.String"/>
+	<field name="DETAIL_CUTI_TANGGAL_MULAI" class="java.sql.Timestamp"/>
+	<field name="DETAIL_CUTI_TANGGAL_SELESAI" class="java.sql.Timestamp"/>
+	<field name="DETAIL_CUTI_LAMA_CUTI" class="java.math.BigDecimal"/>
+	<field name="KARYAWAN_NAMA" class="java.lang.String"/>
+	<field name="CUTI_JENIS_CUTI" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-24" y="-20" width="603" height="99" forecolor="#33CCFF" backcolor="#33CCFF" uuid="4f127086-74c6-4d3d-8190-f4bd25c4c176"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="122" y="17" width="314" height="33" forecolor="#FFFFFF" uuid="a839ac70-9efe-445e-8248-a0c08fcecb0a"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SURAT PENGAJUAN CUTI]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="479" y="19" width="100" height="20" uuid="d956c381-da5c-4670-93d8-ef3aabd307ee"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="86" height="20" uuid="a14f8473-430e-4891-93a7-3b6df995e274"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID DETAIL CUTI  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="49" height="20" uuid="d5657297-406f-4958-9ba6-785ea7406414"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="0" width="79" height="20" uuid="7624b072-fdf4-4cb4-a645-9a98b9bdeece"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="0" width="104" height="20" uuid="d1f5113f-6d8f-4a58-8b14-ce5f55f002ef"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JENIS CUTI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="0" width="88" height="20" uuid="9e545116-cdd0-459d-9719-ba5a039c77c1"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL MULAI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="0" width="90" height="20" uuid="e191ebba-e709-467c-980b-185e4439379b"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL SELESAI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="0" width="59" height="20" uuid="1b5c2392-42eb-4006-b6c0-65e28c728930"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAMA CUTI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="86" height="20" uuid="99029ac9-d504-42c2-8cca-c2ccbf1e83f6"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_ID_DETAIL_CUTI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="49" height="20" uuid="cb7b0309-e343-41ca-a7f7-f712e494a1f2"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_NIK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="0" width="79" height="20" uuid="ad351ee2-56c3-4e43-a93a-28f04e3c1411"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KARYAWAN_NAMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="0" width="104" height="20" uuid="59a34a92-0892-46b5-b5a2-93e980a0dcba"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUTI_JENIS_CUTI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="0" width="59" height="20" uuid="b5d079d2-a538-4d65-821b-a6e0b1345ca0"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_LAMA_CUTI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="0" width="90" height="20" uuid="ef7a28f3-2819-415f-9140-f447418d60be"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_TANGGAL_SELESAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="0" width="88" height="20" uuid="a624205e-fd50-4745-a30b-0691d5abd24d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DETAIL_CUTI_TANGGAL_MULAI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="24" splitType="Stretch"/>
+	</summary>
+</jasperReport>
