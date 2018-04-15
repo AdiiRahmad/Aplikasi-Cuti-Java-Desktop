@@ -1,0 +1,96 @@
+//Membuat Tabel Karyawan
+create table karyawan(
+nik char(4),
+nama varchar2(20),
+alamat varchar2(25),
+agama varchar2(10),
+jenis_kelamin varchar2(10),
+tanggal_lahir date,
+tgl_mulai_kerja date,
+sisa_cuti number(2),
+constraint karyawan_pk primary key(nik))
+
+//Insert Ke Tabel Karyawan
+insert all
+into karyawan values('K001','Adi','Jakarta','Islam','Laki-Laki',to_date('1996-06-05','YYYY-MM-DD'),to_date('2012-11-05','YYYY-MM-DD'),'12')
+into karyawan values('K002','Adit','Tangerang','Islam','Laki-Laki',to_date('1995-07-10','YYYY-MM-DD'),to_date('2012-11-05','YYYY-MM-DD'),'12')
+into karyawan values('K003','Ade','Bogor','Islam','Laki-Laki',to_date('1994-08-15','YYYY-MM-DD'),to_date('2012-11-05','YYYY-MM-DD'),'12')
+into karyawan values('K004','Yusuf','Bekasi','Islam','Laki-Laki',to_date('1993-09-20','YYYY-MM-DD'),to_date('2012-11-05','YYYY-MM-DD'),'12')
+into karyawan values('K005','Aldi','Depok','Islam','Laki-Laki',to_date('1992-10-25','YYYY-MM-DD'),to_date('2012-11-05','YYYY-MM-DD'),'12')
+select * from dual
+
+//Membuat Tabel Jabatan
+create table jabatan(
+id_jabatan char(4),
+jabatan varchar2(15),
+id_pimpinan char(4),
+constraint jabatan_pk primary key(id_jabatan),
+constraint jabatan_fk foreign key(id_pimpinan) references jabatan(id_jabatan))
+
+//Insert ke Tabel Jabatan
+insert all
+into jabatan values('J001','Pim.Manager','J002')
+into jabatan values('J002','HRD','J003')
+into jabatan values('J003','Direksi',null)
+into jabatan values('J004','Karyawan','J006')
+into jabatan values('J005','Manager','J001')
+into jabatan values('J006','HRD','J005')
+into jabatan values('J007','Karyawan','J019')
+into jabatan values('J008','HRD','J011')
+into jabatan values('J009','Karyawan','J008')
+into jabatan values('J010','Karyawan','J014')
+into jabatan values('J011','Manager','J001')
+into jabatan values('J012','Manager','J001')
+into jabatan values('J013','Karyawan','J005')
+into jabatan values('J014','HRD','J016')
+into jabatan values('J015','Karyawan','J008')
+into jabatan values('J016','Manager','J001')
+into jabatan values('J017','Karyawan','J014')
+into jabatan values('J018','Karyawan','J019')
+into jabatan values('J019','HRD','J012')
+into jabatan values('J020','Karyawan','J019')
+select * from dual
+
+//Membuat Tabel Cuti
+create table cuti(
+id_cuti char(4),
+jenis_cuti varchar(50),
+durasi number(5),
+keterangan_cuti varchar(50),
+constraint cuti_pk primary key(id_cuti))
+
+
+//Insert ke Tabel Cuti
+INSERT all
+into cuti values('C001','Cuti Kehamilan','60','Tidak Mengurangi Jatah Cuti')
+into cuti values('C002','Cuti Menikah','3','Tidak Mengurangi Jatah Cuti')
+into cuti values('C003','Cuti Meninggal Dunia','1','Tidak Mengurangi Jatah Cuti')
+into cuti values('C004','Cuti Sakit','0','Mengurangi Jatah Cuti')
+into cuti values('C005','Cuti Khusus','0','Mengurangi Jatah Cuti')
+select * from dual
+
+
+//Membuat Tabel Detail Cuti
+create table detail_cuti(
+id_detail_cuti char (4),
+nik char(4),
+id_cuti char(4),
+keterangan varchar2(50),
+tanggal_mulai date,
+tanggal_selesai date,
+lama_cuti number(2),
+status varchar2(15),
+id_jabatan char(4),
+constraint detail_cuti_pk primary key(id_detail_cuti),
+constraint detail_cuti_fk foreign key(id_cuti) references cuti(id_cuti),
+constraint detail_cuti_fk1 foreign key(nik) references karyawan(nik),
+constraint detail_cuti_fk2 foreign key(id_jabatan) references jabatan(id_jabatan))
+
+
+//Membuat Tabel Detail Karyawan
+create table detail_karyawan(
+nik char(4),
+id_jabatan char(4),
+constraint detail_karyawan_pk primary key(nik),
+constraint detail_karyawan_fk1 foreign key(id_jabatan) references jabatan(id_jabatan),
+constraint detail_karyawan_fk2 foreign key(nik) references karyawan(nik))
