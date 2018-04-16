@@ -1,0 +1,13 @@
+Weakness
+
+Auto ID (Auto Increment)
+Trigger Pengurangan dari 3 buah tabel berdasarkan Setuju Cuti
+Laporan cuti yang berturut turut
+Laporan Cuti Perorangan
+Belum bisa identifikasi bila jenis cuti dipilih bisa mengurangi atau tidak mengurangi sisa cuti karyawan
+Karyawan bisa mengambil Cuti lebih dari 12 hari
+Belum ada autentikasi user
+Desain masih standar
+Lama cuti tidak berdasarkan parameter masih Hardcode
+Detail Cuti yang sudah di setujui tidak hilang di Combo Box Persetujuan Cuti
+Belum ada setting Laporan Cuti Bulanan Tahunan
